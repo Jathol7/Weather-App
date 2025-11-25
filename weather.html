@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="weather.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="weatherApp">
+        <h1><span><i class="fa-solid fa-cloud-sun"></i></span> Weather App</h1>
+
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Search city...">
+            <input type="date" id="dateInput">
+            <button id="getForecast"> <i class="fa-solid fa-cloud-sun-rain"></i>Get Forecast</button>
+        </div>
+        </div>
+        <nav class="tabs">
+            <button class="tab active" data-tab="current"><i class="fa-solid fa-sun"></i>Current</button>
+            <button class="tab" data-tab="hourly"><i class="fa-solid fa-clock"></i>Hourly</button>
+            <button class="tab" data-tab="daily"><i class="fa-solid fa-calendar-day"></i>Daily</button>
+            <button class="tab" data-tab="graphs"><i class="fa-solid fa-chart-line"></i>Graphs</button>
+        </nav>
+    </header>
+
+    <!-- CURRENT WEATHER -->
+    <section id="current" class="tab-content active">
+        <div class="current-box glass">
+            <div class="tempDetails">
+            <h2 id="temp">--°C</h2>
+
+            <div class="weather-grid">
+                <div class="card glass">
+                    <i class="fa-solid fa-temperature-low"></i>
+                    <p>Feels Like</p>
+                    <h3 id="feels">--</h3>
+                </div>
+
+                <div class="card glass">
+                     <i class="fa-solid fa-droplet"></i>
+                    <p>Humidity</p>
+                    <h3 id="humidity">--%</h3>
+                </div>
+
+                <div class="card glass">
+                    <i class="fa-solid fa-wind"></i>
+                    <p>Wind Speed</p>
+                    <h3 id="wind">-- km/h</h3>
+                </div>
+
+                <div class="card glass">
+                    <i class="fa-solid fa-clock"></i>
+                    <p>Pressure</p>
+                    <h3 id="pressure">-- hPa</h3>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <div class="resultsWeather">
+        <h3 id="location"></h3>
+        <p id="dateDay"></p>
+        <p id="description"></p>
+    </div>
+    <!-- HOURLY -->
+    <section id="hourly" class="tab-content">
+        <div class="hourly-wrapper" id="hourlyContainer"></div>
+    </section>
+
+</div>
+
+<script src="weather.js"></script>
+</body>
+</html>
