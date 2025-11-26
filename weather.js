@@ -44,6 +44,7 @@ async function getWeather() {
     document.getElementById("dateDay").innerText = today.toLocaleDateString("en-US", options);
     document.getElementById("description").innerText = "Mainly Clear";
 
+  
     // === HOURLY (Already working) ===
     let hourlyHTML = "";
     for (let i = 0; i < 24; i++) {
@@ -58,6 +59,7 @@ async function getWeather() {
     }
     document.getElementById("hourlyContainer").innerHTML = hourlyHTML;
 
+
     // === DAILY FORECAST ===
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let dailyHTML = "";
@@ -66,8 +68,10 @@ async function getWeather() {
         dailyHTML += `
             <div class="day-card">
                 <h4>${dayName}</h4>
+                <div class="temp-HL">
                 <div class="high">${Math.round(data.daily.temperature_2m_max[i])}°</div>
                 <div class="low">${Math.round(data.daily.temperature_2m_min[i])}°</div>
+                </div>
                 <div class="rain">${data.daily.precipitation_probability_max[i]}%</div>
             </div>`;
     });
@@ -109,3 +113,49 @@ async function getWeather() {
         }
     });
 }
+
+// ----------------------
+// WINDY LIVE SATELLITE BACKGROUND
+// ----------------------
+
+const options = {
+    key: 'TUOh2EWr3ioZv05ETK08wPmypvTiKJPy',  // YOUR WINDY API KEY
+    verbose: false,
+    lat: 25.276987,   // Default view
+    lon: 55.296249,
+    zoom: 5,
+    layer: 'satellite',   // Live satellite layer
+    timestamp: Date.now()
+};
+
+windyInit(options, windyAPI => {
+    const { map } = windyAPI;
+
+    // Disable all interactions (so it works as a background)
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.scrollWheelZoom.disable();
+    map.doubleClickZoom.disable();
+    map.boxZoom.disable();
+    map.keyboard.disable();
+    map._handlers.forEach(h => h.disable());
+
+    // Set container visible
+    document.getElementById("windyBackground").style.opacity = "1";
+});
+document.querySelectorAll(".tab").forEach(tab => {
+    tab.addEventListener("click", function () {
+
+        document.querySelector(".tab.active").classList.remove("active");
+        this.classList.add("active");
+
+        document.querySelector(".tab-content.active").classList.remove("active");
+        document.getElementById(this.dataset.tab).classList.add("active");
+
+        // FIX CHART NOT SHOWING
+        setTimeout(() => {
+            if (window.tempChart) window.tempChart.resize();
+            if (window.precipChart) window.precipChart.resize();
+        }, 250);
+    });
+});

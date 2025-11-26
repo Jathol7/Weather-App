@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="weather.css">
 </head>
 <body>
@@ -28,6 +28,8 @@
             <button class="tab" data-tab="graphs"><i class="fa-solid fa-chart-line"></i>Graphs</button>
         </nav>
     </header>
+<div id="windyBackground"></div>
+
 
     <!-- CURRENT WEATHER -->
     <section id="current" class="tab-content active">
@@ -97,7 +99,8 @@
 </section>
 <section>
     <div class="socialmedia">
-        <p>Api Resource <a href="#">Open-Meteo</a></p>
+        <p>Api Resource <a href="https://api.open-meteo.com/v1/forecast?latitude=31.52&longitude=74.36&current_weather=true
+" target="_blank">Open-Meteo</a></p>
         <div class="icons">
         <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
         <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
@@ -110,6 +113,8 @@
 <!-- Put this in <head> of your HTML -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="weather.js"></script>
+<script src="https://api.windy.com/assets/map-forecast/libBoot.js"></script>
+
 
 </body>
 </html>
