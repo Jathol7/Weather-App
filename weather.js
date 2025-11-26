@@ -35,7 +35,14 @@ async function getWeather() {
     document.getElementById("temp").innerText = data.current_weather.temperature + "°C";
     document.getElementById("wind").innerText = data.current_weather.windspeed + " km/h";
     document.getElementById("location").innerText = `${name}, ${country}`;
-    document.getElementById('dateDay').innerText='today date';
+    const today = new Date();
+    const options = {
+        weekday:"long",
+        month:"long",
+        day:"numeric",
+        year:"numeric"
+    }
+    document.getElementById('dateDay').innerText=today.toLocaleDateString("en-US",options);
     document.getElementById("description").innerText = "Mainly Clear";
 
     document.getElementById("feels").innerText = data.current_weather.temperature;
