@@ -62,21 +62,54 @@
             </div>
             </div>
         </div>
-    </section>
-    <div class="resultsWeather">
+        <div class="resultsWeather">
         <h3 id="location"></h3>
         <p id="dateDay"></p>
         <p id="description"></p>
-    </div>
+        </div>
+    </section>
+    
     <!-- HOURLY -->
     <section id="hourly" class="tab-content">
         <div class="hourly-wrapper" id="hourlyContainer">
             
         </div>
     </section>
+<!-- DAILY TAB -->
+<section id="daily" class="tab-content">
+    <div class="daily-container" id="dailyContainer">
+        <!-- 7 days will be added here by JS -->
+    </div>
+</section>
 
+<!-- GRAPHS TAB -->
+<section id="graphs" class="tab-content">
+    <div class="charts-wrapper">
+        <div class="chart-box">
+            <h3>Temperature Forecast</h3>
+            <canvas id="tempChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <h3>Precipitation & Humidity</h3>
+            <canvas id="precipChart"></canvas>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="socialmedia">
+        <p>Api Resource <a href="#">Open-Meteo</a></p>
+        <div class="icons">
+        <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="#" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    </div>
+</section>
 </div>
-
+<!-- Put this in <head> of your HTML -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="weather.js"></script>
+
 </body>
 </html>

@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: url('pexels-jplenio-1118873.jpg') no-repeat center/cover;
+    background: url('resize-176415454452355855pexels2.jpg') no-repeat center/cover;
 }
 
 /* MAIN CONTAINER */
@@ -24,7 +24,7 @@ body {
     padding: 1px 20px;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
 }
 #getForecast i{
     margin-right: 0.2em;
@@ -52,7 +52,7 @@ header h1 span{
     margin-bottom: 25px;
     background: rgba(255,255,255,0.01);
     backdrop-filter: blur(1px);
-    width: 75%;
+    width: 73%;
     border-radius: 50px;
     margin-left: 8em;
 }
@@ -62,7 +62,7 @@ header h1 span{
     border: none;
     width: 35%;
     background:transparent;
-    color: white;
+    color:  white;
 }
 input::placeholder{
     color: white;
@@ -114,6 +114,7 @@ input::placeholder{
 .tempDetails{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 /* GLASS EFFECT */
 .glass {
@@ -150,6 +151,8 @@ input::placeholder{
 /*results of weather after search display*/
 .resultsWeather{
     text-align: center;
+    color: white;
+    border-bottom: 1px solid gray;
 }
 /* HOURLY */
 .hourly-wrapper {
@@ -157,8 +160,26 @@ input::placeholder{
     overflow-x: scroll;
     gap: 15px;
     padding: 10px 0;
+    margin-bottom: 1em;
 }
-
+/*Social media icons and api meteo bottom/footer*/
+.socialmedia{
+    text-align: center;
+    color: white;
+    margin-bottom: 1em;
+    font-size: 0.8em;
+}
+.socialmedia p a{
+    color: blueviolet;
+    text-decoration: none;
+    margin: 0 0.5em;
+    font-size: 1.2em;
+}
+.socialmedia .icons a{
+    font-size: 1.3em;
+    margin: 0 0.2em;
+    color: white;
+}
 .hour-card {
     min-width: 110px;
     padding: 15px;
@@ -166,4 +187,74 @@ input::placeholder{
     color: white;
     border-radius: 15px;
     background: rgba(255,255,255,0.12);
+}
+/* DAILY CARDS */
+.daily-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.day-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 20px;
+    width: 130px;
+    text-align: center;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.day-card:hover {
+    transform: translateY(-8px);
+}
+
+.day-card h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.day-card .high {
+    font-size: 28px;
+    color: orange;
+    font-weight: 600;
+}
+
+.day-card .low {
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.day-card .rain {
+    margin-top: 8px;
+    color: #4ca0ff;
+    font-weight: 500;
+}
+
+/* CHARTS */
+.charts-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px 0;
+}
+
+.chart-box {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(16px);
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.chart-box h3 {
+    text-align: center;
+    margin-bottom: 16px;
+    color: white;
+    font-size: 18px;
 }
