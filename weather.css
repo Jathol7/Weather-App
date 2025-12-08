@@ -280,4 +280,43 @@ input::placeholder{
     height: 100%;
     z-index: -1; /* keeps your UI on top */
 }
+/*gradient background media*/
+/* ADD this to your CSS file (weather.css) at the end */
 
+/* Rounded graph containers with borders */
+.charts-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.chart-box {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border-radius: 25px; /* Rounded corners */
+    padding: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Border around box */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.chart-box:hover {
+    transform: translateY(-5px);
+}
+
+.chart-box h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+/* Make canvas fit nicely */
+.chart-box canvas {
+    border-radius: 15px; /* Inner canvas rounded */
+    overflow: hidden;
+}
+
+/* Dark theme adjustments for graphs (add to your existing chart options in JS) */
