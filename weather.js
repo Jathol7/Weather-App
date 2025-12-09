@@ -94,94 +94,106 @@ async function getWeather() {
     // GRAPHS (TEMP + FEELS)
         // === CHARTS ===
     // 1. Create labels (this must come BEFORE the charts!)
-    const labels = data.hourly.time.slice(0, 24).map(t => {
-        const date = new Date(t);
-        const h = date.getHours();
-        return (h % 12 || 12) + (h < 12 ? " AM" : " PM");
-    });
 
     // Destroy old charts safely
-    if (window.tempChart && typeof window.tempChart.destroy === 'function') {
-        window.tempChart.destroy();
-    }
-    if (window.precipChart && typeof window.precipChart.destroy === 'function') {
-        window.precipChart.destroy();
-    }
+// ---------------------------
+//      GRAPH SECTION UPDATED
+// ---------------------------
 
-    // Temperature Chart (Pink = Temp, Blue = Feels Like)
-    window.tempChart = new Chart(document.getElementById("tempChart"), {
-        type: "line",
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: "Temperature (°C)",
-                    data: data.hourly.temperature_2m.slice(0,24).map(Math.round),
-                    borderColor: "#ff69b4",
-                    backgroundColor: "rgba(255,105,180,0.15)",
-                    tension: 0.4,
-                    fill: true,
-                    pointRadius: 5,
-                    pointBackgroundColor: "#ff69b4",
-                    borderWidth: 3
-                },
-                {
-                    label: "Feels Like (°C)",
-                    data: data.hourly.apparent_temperature.slice(0,24).map(Math.round),
-                    borderColor: "#4ca0ff",
-                    backgroundColor: "rgba(76,160,255,0.15)",
-                    tension: 0.4,
-                    fill: true,
-                    pointRadius: 5,
-                    pointBackgroundColor: "#4ca0ff",
-                    borderWidth: 3
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: { legend: { labels: { color: "white", font: { size: 14 } } } },
-            scales: { x: { ticks: { color: "white" } }, y: { ticks: { color: "white" } } }
-        }
-    });
+// Destroy previous charts
+if (window.tempChart instanceof Chart) window.tempChart.destroy();
+if (window.precipChart instanceof Chart) window.precipChart.destroy();
 
-    // Precipitation & Humidity Chart (Blue = Precip, Purple = Humidity)
-    window.precipChart = new Chart(document.getElementById("precipChart"), {
-        type: "line",
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: "Precipitation (%)",
-                    data: data.hourly.precipitation_probability.slice(0,24),
-                    borderColor: "#4ca0ff",
-                    backgroundColor: "rgba(76,160,255,0.1)",
-                    tension: 0.4,
-                    fill: false,
-                    pointRadius: 5,
-                    pointBackgroundColor: "#4ca0ff",
-                    borderWidth: 3
-                },
-                {
-                    label: "Humidity (%)",
-                    data: data.hourly.relative_humidity_2m.slice(0,24),
-                    borderColor: "#a020f0",
-                    backgroundColor: "rgba(160,32,240,0.1)",
-                    tension: 0.4,
-                    fill: false,
-                    pointRadius: 5,
-                    pointBackgroundColor: "#a020f0",
-                    borderWidth: 3
-                }
-            ]
+// Labels (24 hours)
+const labels = data.hourly.time.slice(0, 24).map(t => {
+    const h = new Date(t).getHours();
+    return (h % 12 || 12) + (h < 12 ? " AM" : " PM");
+});
+
+// TEMP + FEELS CHART
+window.tempChart = new Chart(document.getElementById("tempChart"), {
+    type: "line",
+    data: {
+        labels,
+        datasets: [
+            {
+                label: "Temperature (°C)",
+                data: data.hourly.temperature_2m.slice(0, 24),
+                borderColor: "rgba(255,255,255,0.9)",
+                borderWidth: 3,
+                tension: 0.45,
+                pointRadius: 4,
+                pointBackgroundColor: "#ffffff",
+                fill: false,
+            },
+            {
+                label: "Feels Like (°C)",
+                data: data.hourly.apparent_temperature.slice(0, 24),
+                borderColor: "rgba(255,120,120,1)",
+                borderWidth: 3,
+                tension: 0.45,
+                pointRadius: 4,
+                pointBackgroundColor: "rgba(255,120,120,1)",
+                fill: false,
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            x: { ticks: { color: "white" } },
+            y: { ticks: { color: "white" } }
         },
-        options: {
-            responsive: true,
-            plugins: { legend: { labels: { color: "white", font: { size: 14 } } } },
-            scales: {
-                x: { ticks: { color: "white" } },
-                y: { ticks: { color: "white" }, beginAtZero: true, max: 100 }
+        plugins: {
+            legend: {
+                labels: { color: "white" }
             }
         }
-    });
+    }
+});
+
+// PRECIPITATION + HUMIDITY CHART
+// PRECIPITATION + HUMIDITY (LINE + LINE)
+window.precipChart = new Chart(document.getElementById("precipChart"), {
+    type: "line",
+    data: {
+        labels: labels,
+        datasets: [
+            {
+                label: "Precipitation (%)",
+                data: data.hourly.precipitation_probability.slice(0, 24),
+                borderColor: "#4da6ff",
+                borderWidth: 3,
+                tension: 0.4,
+                pointRadius: 4,
+                pointBackgroundColor: "#4da6ff",
+                fill: false,
+            },
+            {
+                label: "Humidity (%)",
+                data: data.hourly.relative_humidity_2m.slice(0, 24),
+                borderColor: "#ffdd55",
+                borderWidth: 3,
+                tension: 0.4,
+                pointRadius: 4,
+                pointBackgroundColor: "#ffdd55",
+                fill: false,
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            x: { ticks: { color: "white" } },
+            y: { ticks: { color: "white" } }
+        },
+        plugins: {
+            legend: {
+                labels: { color: "white" }
+            }
+        }
+    }
+});
+
+
 }

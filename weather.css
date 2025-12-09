@@ -320,3 +320,71 @@ input::placeholder{
 }
 
 /* Dark theme adjustments for graphs (add to your existing chart options in JS) */
+/* ------------------------ */
+/* ROUNDED UI IMPROVEMENTS */
+/* ------------------------ */
+
+/* CURRENT WEATHER CARDS */
+.card {
+    text-align: center;
+    padding: 1.2em;
+    color: white;
+    border-radius: 25px; /* MORE ROUND */
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* HOURLY CARDS */
+.hour-card {
+    min-width: 120px;
+    padding: 18px;
+    text-align: center;
+    color: white;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    transition: 0.3s ease;
+}
+
+.hour-card:hover {
+    transform: translateY(-6px);
+}
+
+/* DAILY CARDS */
+.day-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 30px;
+    padding: 20px;
+    width: 150px;
+    color: white;
+    transition: .3s ease;
+}
+
+.day-card:hover {
+    transform: translateY(-7px);
+}
+
+/* CHART BOXES */
+.chart-box {
+    background: rgba(255,255,255,0.10);
+    border-radius: 30px;
+    backdrop-filter: blur(15px);
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* GRAPH LINE ROUNDED EDGES */
+canvas {
+    border-radius: 20px !important;
+}
+
+/* CHART LEGEND COLORS (WHITE) */
+.chart-box h3 {
+    color: white;
+}
